@@ -51,11 +51,13 @@ create an eda-challenge namespace to deploy all your staff
 
 To complete this challenge, you need:
 
-- an IDE (your prefer one), you have a Code Ready Workspace available if you want.
+- an IDE (your prefer one), you will have a CodeReady Workspace available if you want.
 - JDK 11+ installed with JAVA_HOME configured appropriately
 - Apache Maven 3.8.1+
 - (Optional) OpenShift CLI (`oc` command) could be usefull.
 - (Optional) Container runtime (docker or podman) to run locally containers.
+- (Optional, but powerfull) Container runtime, such as [Docker](https://www.docker.com/products/docker-desktop or
+[Podman](https://podman.io/), to run containers in your development environment
 
 ## Quarkus Application
 
@@ -163,11 +165,12 @@ mvn io.quarkus.platform:quarkus-maven-plugin:2.2.3.Final:create \
 This command allows to bootstrap a maven based application and creates a JAX-RS endpoint.
 **NOTE**: check the last Quarkus version available in the [site](https://quarkus.io/)
 
-When testing or running in dev mode you should use the Kafka and Apicurio services provided
-out of the box by DevServices from Quarkus. Check how it works [here](https://quarkus.io/guides/kafka-dev-services)
-and [here](https://quarkus.io/guides/apicurio-registry-dev-services).
+When testing or running in development mode you should use the Kafka and Apicurio services provided
+out of the box by DevServices from Quarkus (**required a container engine**.
+Check how it works [here](https://quarkus.io/guides/kafka-dev-services)
+and [here](https://quarkus.io/guides/apicurio-registry-dev-services). 
 
-For prod mode you should have deployed the Apache Kafka and Service Registry services in your
+For production mode you should have deployed the Apache Kafka and Service Registry services in your
 OpenShift cluster. You will need to configure the Quarkus Application to connect such services.
 
 Now you should be ready to run the bootstrapped application. The dev mode is an awesome mode that
@@ -190,6 +193,16 @@ Now you are set!
 
 **Bonus (Optional)**: If your application allows users to publish messages and to consume them with
 some kind of API or UI, it will be much appreciated for us.
+
+### Alternatives when you do not have a container engine
+
+When you development environment has not a container engine, and you cannot install one, then you
+have to deploy before to start your Quarkus application.
+
+The following resources could help you to install and run locally the following services:
+
+* Apache Kafka: Sample guide to install a cluster is available in this [quickstart](https://kafka.apache.org/quickstart)
+* Apicurio Registry: Follow the [instructions](https://github.com/Apicurio/apicurio-registry#readme) to install and run your local schema registry.
 
 ### Packaging and run the application
 
